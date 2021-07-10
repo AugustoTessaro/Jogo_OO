@@ -5,19 +5,25 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 
 public class Construcao_Jogo extends JPanel implements ActionListener
 {
+	private Image Plano_De_Fundo;
 	private Player jogador;
 	private Timer delay;
 	
 	public Construcao_Jogo()
 	{
+		ImageIcon fundo = new ImageIcon("imagem/fundo.png");
+		Plano_De_Fundo = fundo.getImage();
+		
 		jogador = new Player();
 		jogador.esteticaPlayer();
 		
@@ -30,7 +36,9 @@ public class Construcao_Jogo extends JPanel implements ActionListener
 	public void desenhar(Graphics g)
 	{
 		Graphics2D graficos = (Graphics2D) g;
+		graficos.drawImage(Plano_De_Fundo, 0, 0, null);
 		graficos.drawImage(jogador.getImagem_nave(), jogador.getX(), jogador.getY(),this);
+		g.dispose();
 	}
 	
 	

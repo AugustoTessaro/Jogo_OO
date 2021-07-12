@@ -2,6 +2,8 @@ package Jogo;
 
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 
@@ -11,6 +13,7 @@ public class Player implements Movimentos
     private int y;
     private int dy;
     private Image imagem_nave;
+    private List <Projetil> projetil;
     private int altura , largura;
 
 
@@ -24,14 +27,30 @@ public class Player implements Movimentos
 
     public void esteticaPlayer()
     {
-        ImageIcon espaco_nave = new ImageIcon("imagem\\nave_pequena.png");
-
+    	
+        var espaco_nave = new ImageIcon("imagem\\nave_pequena.png");
         imagem_nave = espaco_nave.getImage();
+        
         altura = imagem_nave.getHeight(null);
         largura = imagem_nave.getWidth(null);
+       
+        projetil = new ArrayList<Projetil>();
     }
 
-    public void atualizar_imagem_player()
+    
+    public void atirar()
+    {
+    	this.projetil.add(new Projetil(x + largura,y + altura/2));
+    }
+    
+    
+    public List<Projetil> getProjetil() {
+		return projetil;
+	}
+
+
+
+	public void atualizar_imagem_player()
     {
     	if(dy == -3){
             var testeY = y + dy;
@@ -72,6 +91,11 @@ public class Player implements Movimentos
         {
             dy = 3;
         }
+        
+        if(cod_tecla == KeyEvent.VK_SPACE)
+        {
+        	atirar();
+        }
 
     }
 
@@ -107,4 +131,3 @@ public class Player implements Movimentos
     }
 
 }
-	

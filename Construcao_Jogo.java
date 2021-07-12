@@ -12,6 +12,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyListener;
+import java.util.List;
 
 public class Construcao_Jogo extends JPanel implements ActionListener, KeyListener
 {
@@ -28,7 +29,7 @@ public class Construcao_Jogo extends JPanel implements ActionListener, KeyListen
         jogador = new Player();
         jogador.esteticaPlayer();
 
-                setFocusable(true);
+        setFocusable(true);
         addKeyListener(this);
 
         delay = new Timer(2,this);
@@ -40,6 +41,15 @@ public class Construcao_Jogo extends JPanel implements ActionListener, KeyListen
         Graphics2D graficos = (Graphics2D) g;
         graficos.drawImage(PlanoDeFundo, 1, 1, null);
         graficos.drawImage(jogador.getImagem_nave(), jogador.getX(), jogador.getY(),this);
+        
+        List<Projetil> projetil = jogador.getProjetil();
+        
+        for(int a = 0; a < projetil.size(); a++)
+        {
+        	Projetil p = projetil.get(a);
+        	graficos.drawImage(p.getImagem_tiro(), p.getX(), p.getY(), this);
+        }
+        
         g.dispose();
     }
 
@@ -48,8 +58,24 @@ public class Construcao_Jogo extends JPanel implements ActionListener, KeyListen
     @Override
     public void actionPerformed(ActionEvent e)
     {
+    	List<Projetil> projetil = jogador.getProjetil();
+    	
+    	for(int a = 0; a < projetil.size(); a++)
+    	{
+    		Projetil p = projetil.get(a);
+    		
+    		if(p.isVisibilidade_tiro())
+    		{
+    			p.movimentar_tiro();
+    		}
+    		
+    		else
+    		{
+    			projetil.remove(a);
+    		}
+    	}
+    	
         jogador.atualizar_imagem_player();
-
         repaint();
     }
 

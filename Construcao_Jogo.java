@@ -15,14 +15,16 @@ import java.awt.Image;
 
 public class Construcao_Jogo extends JPanel implements ActionListener
 {
-	private Image Plano_De_Fundo;
+	
+	private Image PlanoDeFundo;
 	private Player jogador;
 	private Timer delay;
 	
 	public Construcao_Jogo()
 	{
-		ImageIcon fundo = new ImageIcon("imagem/fundo.png");
-		Plano_De_Fundo = fundo.getImage();
+		ImageIcon fundo = new ImageIcon("imagem\\"
+				+ "fundo.jpg");
+		PlanoDeFundo = fundo.getImage();
 		
 		jogador = new Player();
 		jogador.esteticaPlayer();
@@ -33,10 +35,10 @@ public class Construcao_Jogo extends JPanel implements ActionListener
 		delay.start();
 	}
 
-	public void desenhar(Graphics g)
+	public void paint(Graphics g)
 	{
 		Graphics2D graficos = (Graphics2D) g;
-		graficos.drawImage(Plano_De_Fundo, 0, 0, null);
+		graficos.drawImage(PlanoDeFundo, 1, 1, null);
 		graficos.drawImage(jogador.getImagem_nave(), jogador.getX(), jogador.getY(),this);
 		g.dispose();
 	}
@@ -52,15 +54,15 @@ public class Construcao_Jogo extends JPanel implements ActionListener
 	
 	private class TecladoAdapter extends KeyAdapter
 	{
-		@Override
-		public void keyPressed(KeyEvent e)
+		public void KeyPressed(KeyEvent e) 
 		{
+			
 			jogador.KeyPressed(e);
 		}
-		
-		@Override
-		public void keyReleased(KeyEvent e)
+
+		public void KeyReleased(KeyEvent e) 
 		{
+			
 			jogador.KeyReleased(e);
 		}
 	}

@@ -16,20 +16,21 @@ public class Player implements Movimentos
 	
 	public Player()
 	{
-		this.x = 100;
-		this.y = 100;
+		this.x = 50;
+		this.y = 50;
 	}
 	
-	
+
+
 	public void esteticaPlayer()
 	{
-		ImageIcon espaco_nave = new ImageIcon("imagem\\nave.png");
+		ImageIcon espaco_nave = new ImageIcon("imagem\\nave_pequena.png");
 		imagem_nave = espaco_nave.getImage();
 		altura = imagem_nave.getHeight(null);
 		largura = imagem_nave.getWidth(null);
 	}
 	
-	public void atualizar_imagem()
+	public void atualizar_imagem_player()
 	{
 		y += dy;
 	}
@@ -76,18 +77,8 @@ public class Player implements Movimentos
 	}
 
 
-	public void setX(int x) {
-		this.x = x;
-	}
-
-
 	public int getY() {
 		return y;
-	}
-
-
-	public void setY(int y) {
-		this.y = y;
 	}
 
 
@@ -96,11 +87,4 @@ public class Player implements Movimentos
 	}
 
 
-	public void setImagem_nave(Image espaco_nave) {
-		this.imagem_nave = espaco_nave;
-	}
 	
-	
-	
-	
-}

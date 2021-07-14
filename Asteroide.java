@@ -29,7 +29,7 @@ public class Asteroide
 		var tiro = new ImageIcon("imagem\\Meteoro.png");
 		imagem_asteroide = tiro.getImage();
 		
-		this.largura = imagem_asteroide.getHeight(null);
+		this.altura = imagem_asteroide.getHeight(null);
 		this.largura = imagem_asteroide.getWidth(null);
 		
 		visibilidade_asteroide = true;

@@ -24,7 +24,7 @@ public class Projetil
 		var tiro = new ImageIcon("imagem\\TIRO.png");
 		imagem_tiro = tiro.getImage();
 		
-		this.largura = imagem_tiro.getHeight(null);
+		this.altura = imagem_tiro.getHeight(null);
 		this.largura = imagem_tiro.getWidth(null);
 		visibilidade_tiro = true;
 		

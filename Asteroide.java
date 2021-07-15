@@ -1,77 +1,27 @@
 package Jogo;
 
-import java.awt.Image;
-import java.awt.Rectangle;
-
-
 import javax.swing.ImageIcon;
 
-public class Asteroide 
+public class Asteroide extends Personagem
 {
-	private Image imagem_asteroide;
-	private int x, y;
-	private int largura, altura;
-	private boolean visibilidade_asteroide;
 	
-	
-	private static final int Velocidade_asteroide = 2;
-	
-	
-	public Asteroide(int x, int y)
-	{
-		this.x = x;
-		this.y = y;
-		visibilidade_asteroide = true;
+	public Asteroide(int x, int y) {
+		super(x, y);
 	}
+
+	private static final int VELOCIDADE= 2;
 	
-	public void estetica_asteroide()
-	{
-		var tiro = new ImageIcon("imagem\\Meteoro.png");
-		imagem_asteroide = tiro.getImage();
-		
-		this.altura = imagem_asteroide.getHeight(null);
-		this.largura = imagem_asteroide.getWidth(null);
-		
-		
-	}
 	
-	public void movimentar_asteroide()
+
+	public void movimentarAsteroide()
 	{	
-		this.x -= Velocidade_asteroide;
+		this.x -= VELOCIDADE;
 	}	
-	
 
-
-	public boolean Visibilidade_asteroide() {
-		return visibilidade_asteroide;
-	}
-
-
-	public void setVisibilidade_asteroide(boolean visibilidade_asteroide) {
-		this.visibilidade_asteroide = visibilidade_asteroide;
-	}
-
-
-	public Image getImagem_asteroide() {
-		return imagem_asteroide;
-	}
-
-
-	public int getX() {
-		return x;
-	}
-
-
-	public int getY() {
-		return y;
-	}
-	
-	public Rectangle getBounds()
+	@Override
+	public void setImagem() 
 	{
-		return new Rectangle(x, y, largura, altura);
+		var imagemAsteroide = new ImageIcon("imagem\\Meteoro.png");
+		this.imagem = imagemAsteroide.getImage();
 	}
-
-	
-	
-
 }

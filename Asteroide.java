@@ -24,4 +24,4 @@ public class Asteroide extends Personagem
 		var imagemAsteroide = new ImageIcon("imagem\\Meteoro.png");
 		this.imagem = imagemAsteroide.getImage();
 	}
-} alberto
+}
